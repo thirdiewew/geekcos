@@ -139,6 +139,24 @@ lightingCards.forEach(function(card) {
   };
 });
 
+//camera shot selection
+const cameraShotCards = document.querySelectorAll(".camera-shot-card");
+cameraShotCards.forEach(function(card) {
+  card.onclick = function () {
+    cameraShotCards.forEach(function(c) {
+
+      c.classList.remove("border-primary");
+      c.classList.add("border-border");
+
+    });
+
+    card.classList.remove("border-border");
+    card.classList.add("border-primary");
+
+    selectedCameraShot = card.dataset.shot;
+  };
+});
+
 /**
  * Convert a Blob to a base64 data URL string.
  */
@@ -342,7 +360,7 @@ button.addEventListener("click", async (e) => {
 
 
   // ===== BUILD PROMPT =====
-  let prompt = `${subject}, ${selectedStyle} style, ${selectedLighting}, professional photography, high quality, detailed, realistic photography`;
+let prompt = `${subject}, ${selectedStyle} style, ${selectedLighting}, ${selectedCameraShot}, professional photography, high quality, detailed, realistic photography`;
 
   if (extraDetails) {
     prompt += `, ${extraDetails}`;
