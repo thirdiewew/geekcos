@@ -61,6 +61,7 @@ let selectedLighting = "Golden Hour";
 let currentGeneratedURL = null;
 let currentGeneratedBlob = null; // keep the raw blob for base64 conversion
 let navigatingToBooking = false; // flag to suppress beforeunload warning
+let selectedCameraShot = ""; // camera shot not selected by default
 
 //subject df
 const subjectSelect = document.getElementById("subject-select");
@@ -355,6 +356,12 @@ button.addEventListener("click", async (e) => {
       "Please enter a subject!"
     );
 
+    return;
+  }
+
+  // make sure camera shot is selected
+  if (!selectedCameraShot) {
+    alert("Please select a camera shot!");
     return;
   }
 
